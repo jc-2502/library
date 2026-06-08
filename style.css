@@ -1,0 +1,12 @@
+/* ****************************** resets / universal ****************************** */
+
+* {
+  box-sizing: border-box;
+  font-family: Roboto, system-ui, sans-serif;
+}
+
+*:not(dialog) {
+  margin: 0;
+}
+
+/* ******************************  ****************************** */
