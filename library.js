@@ -17,3 +17,7 @@ function addBookToLibrary(title, author, read) {
 
   library.push(book);
 }
+
+addBookToLibrary('Thinking, Fast and Slow', 'Daniel Kahneman', true);
+addBookToLibrary('Predictably Irrational', 'Dan Ariely', true);
+addBookToLibrary('Nudge', 'Richard Thaler and Cass Sunstein', false);
