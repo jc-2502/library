@@ -20,7 +20,7 @@ h1, h2 {
   text-align: center;
 }
 
-.book {
+.grid-row {
   display: grid;
   grid-template-columns: 40% 40% 20%;
 }

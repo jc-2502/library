@@ -21,6 +21,8 @@ function addBookToLibrary(title, author, read) {
 }
 
 function displayBooks() {
+  displayColumnHeaders();
+
   for (const book of library) {
     const bookContainer = document.createElement('div');
     const title = document.createElement('p');
@@ -32,6 +34,7 @@ function displayBooks() {
     readStatus.textContent = (book.read) ? 'read': 'not read';
 
     bookContainer.classList.add('book');
+    bookContainer.classList.add('grid-row');
     title.classList.add('title');
     author.classList.add('author');
     readStatus.classList.add('read');
@@ -41,6 +44,22 @@ function displayBooks() {
     bookContainer.appendChild(readStatus);
     booksContainer.appendChild(bookContainer);
   };
+}
+
+function displayColumnHeaders() {
+  const columnHeadersContainer = document.createElement('div');
+
+  columnHeaders = ['Title', 'Author', 'Read'];
+
+  for (const columnHeader of columnHeaders) {
+    const headerElement = document.createElement('h3');
+    headerElement.textContent = columnHeader;
+    headerElement.classList.add('column-header');
+    columnHeadersContainer.appendChild(headerElement);
+  }
+
+  columnHeadersContainer.classList.add('grid-row');
+  booksContainer.appendChild(columnHeadersContainer);
 }
 
 addBookToLibrary('Thinking, Fast and Slow', 'Daniel Kahneman', true);
