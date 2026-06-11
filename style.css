@@ -19,3 +19,8 @@ body > * {
 h1, h2 {
   text-align: center;
 }
+
+.book {
+  display: grid;
+  grid-template-columns: 40% 40% 20%;
+}
