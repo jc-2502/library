@@ -25,9 +25,9 @@ function displayBooks() {
 
   for (const book of library) {
     const bookContainer = document.createElement('div');
-    const title = document.createElement('p');
-    const author = document.createElement('p');
-    const readStatus = document.createElement('p');
+    const title = document.createElement('div');
+    const author = document.createElement('div');
+    const readStatus = document.createElement('div');
 
     title.textContent = book.title;
     author.textContent = book.author;
