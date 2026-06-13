@@ -67,3 +67,17 @@ addBookToLibrary('Predictably Irrational', 'Dan Ariely', 'finished');
 addBookToLibrary('Nudge', 'Richard Thaler and Cass Sunstein', 'reading');
 addBookToLibrary('Ulysses', 'James Joyce', 'not started');
 displayBooks();
+
+const addBookForm = document.querySelector('#add-book');
+addBookForm.addEventListener('submit', addBookFromForm);
+
+function addBookFromForm(event) {
+  event.preventDefault();
+
+  const formElements = event.target.elements;
+  const enteredTitle = formElements['entered-title'].value;
+  const enteredAuthor = formElements['entered-author'].value;
+  const selectedStatus = formElements['selected-status'].value;
+
+  addBookToLibrary(enteredTitle, enteredAuthor, selectedStatus);
+}
