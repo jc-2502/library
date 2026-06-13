@@ -20,7 +20,19 @@ h1, h2 {
   text-align: center;
 }
 
-.grid-row {
+#add-book, .books-row {
   display: grid;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+}
+
+#add-book {
+  grid-template-columns: 35% 35% 15% 15%;
+}
+
+.books-row {
   grid-template-columns: 40% 40% 20%;
 }

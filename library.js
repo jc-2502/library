@@ -34,7 +34,7 @@ function displayBooks() {
     readStatus.textContent = (book.read) ? 'read': 'not read';
 
     bookContainer.classList.add('book');
-    bookContainer.classList.add('grid-row');
+    bookContainer.classList.add('books-row');
     title.classList.add('title');
     author.classList.add('author');
     readStatus.classList.add('read');
@@ -58,7 +58,7 @@ function displayColumnHeaders() {
     columnHeadersContainer.appendChild(headerElement);
   }
 
-  columnHeadersContainer.classList.add('grid-row');
+  columnHeadersContainer.classList.add('books-row');
   booksContainer.appendChild(columnHeadersContainer);
 }
 

@@ -8,6 +8,28 @@
   </head>
   <body>
     <h1>Library</h1>
+    <div class='add-book-section'>
+      <h3>Add book</h3>
+      <form id='add-book' action='' method='post'>
+        <div class='form-control'>
+          <label for='entered-title'>Title</label>
+          <input id='entered-title' name='entered-title' type='text' required>
+        </div>
+        <div class='form-control'>
+          <label for='entered-author'>Author</label>
+          <input id='entered-author' name='entered-author' type='text'>
+        </div>
+        <div class='form-control'>
+          <label for='selected-status'>Status</label>
+          <select id='selected-status' name='selected-status' required>
+            <option value='finished'>finished</option>
+            <option value='reading'>reading</option>
+            <option value='not started'>not started</option>
+          </select>
+        </div>
+        <button type='submit'>Add</button>
+      </form>
+    </div>
     <div class='books-section'>
       <h2>Books</h2>
       <div class='books'>
