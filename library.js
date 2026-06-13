@@ -2,7 +2,7 @@ let library = [];
 
 const booksContainer = document.querySelector('.books');
 
-function Book(id, title, author, read) {
+function Book(id, title, author, status) {
   if (!new.target) {
     throw Error('include new when calling constructor');
   }
@@ -10,12 +10,12 @@ function Book(id, title, author, read) {
   this.id = id;
   this.title = title;
   this.author = author;
-  this.read = read;
+  this.status = status;
 }
 
-function addBookToLibrary(title, author, read) {
+function addBookToLibrary(title, author, status) {
   const id = crypto.randomUUID();
-  const book = new Book(id, title, author, read);
+  const book = new Book(id, title, author, status);
 
   library.push(book);
 }
@@ -27,21 +27,21 @@ function displayBooks() {
     const bookContainer = document.createElement('div');
     const title = document.createElement('div');
     const author = document.createElement('div');
-    const readStatus = document.createElement('div');
+    const status = document.createElement('div');
 
     title.textContent = book.title;
     author.textContent = book.author;
-    readStatus.textContent = (book.read) ? 'read': 'not read';
+    status.textContent = book.status;
 
     bookContainer.classList.add('book');
     bookContainer.classList.add('books-row');
     title.classList.add('title');
     author.classList.add('author');
-    readStatus.classList.add('read');
+    status.classList.add('status');
 
     bookContainer.appendChild(title);
     bookContainer.appendChild(author);
-    bookContainer.appendChild(readStatus);
+    bookContainer.appendChild(status);
     booksContainer.appendChild(bookContainer);
   };
 }
@@ -49,7 +49,7 @@ function displayBooks() {
 function displayColumnHeaders() {
   const columnHeadersContainer = document.createElement('div');
 
-  columnHeaders = ['Title', 'Author', 'Read'];
+  columnHeaders = ['Title', 'Author', 'Status'];
 
   for (const columnHeader of columnHeaders) {
     const headerElement = document.createElement('h3');
@@ -62,7 +62,8 @@ function displayColumnHeaders() {
   booksContainer.appendChild(columnHeadersContainer);
 }
 
-addBookToLibrary('Thinking, Fast and Slow', 'Daniel Kahneman', true);
-addBookToLibrary('Predictably Irrational', 'Dan Ariely', true);
-addBookToLibrary('Nudge', 'Richard Thaler and Cass Sunstein', false);
+addBookToLibrary('Thinking, Fast and Slow', 'Daniel Kahneman', 'finished');
+addBookToLibrary('Predictably Irrational', 'Dan Ariely', 'finished');
+addBookToLibrary('Nudge', 'Richard Thaler and Cass Sunstein', 'reading');
+addBookToLibrary('Ulysses', 'James Joyce', 'not started');
 displayBooks();
