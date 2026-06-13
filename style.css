@@ -20,7 +20,7 @@ h1, h2 {
   text-align: center;
 }
 
-#add-book, .books-row {
+#add-book, .books > * {
   display: grid;
 }
 
@@ -33,6 +33,6 @@ h1, h2 {
   grid-template-columns: 35% 35% 15% 15%;
 }
 
-.books-row {
+.books > * {
   grid-template-columns: 40% 40% 20%;
 }
