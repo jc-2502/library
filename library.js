@@ -55,6 +55,9 @@ function addBookFromForm(event) {
   const selectedStatus = formElements['selected-status'].value;
 
   addBookToLibrary(enteredTitle, enteredAuthor, selectedStatus);
+
+  const titleInput = formElements['entered-title'];
+  titleInput.value = titleInput.defaultValue;
 }
 
 addBookToLibrary('Thinking, Fast and Slow', 'Daniel Kahneman', 'finished');
