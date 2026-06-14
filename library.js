@@ -1,9 +1,7 @@
 let library = [];
 
-const booksContainer = document.querySelector('.books');
-
 const addBookForm = document.querySelector('#add-book');
-addBookForm.addEventListener('submit', addBookFromForm);
+const booksContainer = document.querySelector('.books');
 
 function Book(id, title, author, status) {
   if (!new.target) {
@@ -31,6 +29,8 @@ function displayBook(book) {
   const author = document.createElement('div');
   const status = document.createElement('div');
   const removeButton = document.createElement('button');
+  const bookRowElements = [title, author, status, removeButton];
+  const allBookElements = bookRowElements.concat(bookContainer);
 
   title.textContent = book.title;
   author.textContent = book.author;
@@ -43,11 +43,25 @@ function displayBook(book) {
   status.classList.add('status');
   removeButton.classList.add('remove');
 
+  allBookElements.forEach(element => element.dataset.id = book.id);
+
+  removeButton.addEventListener('click', removeBook);
+
   bookContainer.appendChild(title);
   bookContainer.appendChild(author);
   bookContainer.appendChild(status);
   bookContainer.appendChild(removeButton);
   booksContainer.appendChild(bookContainer);
+}
+
+function removeBook(event) {
+  const idToRemove = event.target.dataset.id;
+
+  const bookContainer = document.querySelector(`.book[data-id='${idToRemove}']`);
+  bookContainer.remove();
+
+  library = library.filter(book => book['id'] !== idToRemove);
+  // library.splice(library.findIndex(book => book['id'] === idToRemove), 1);
 }
 
 function addBookFromForm(event) {
@@ -68,6 +82,8 @@ function resetForm(formElements) {
   titleInput.value = titleInput.defaultValue;
   titleInput.focus();
 }
+
+addBookForm.addEventListener('submit', addBookFromForm);
 
 addBookToLibrary('Thinking, Fast and Slow', 'Daniel Kahneman', 'finished');
 addBookToLibrary('Predictably Irrational', 'Dan Ariely', 'finished');
