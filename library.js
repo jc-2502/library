@@ -47,10 +47,7 @@ function displayBook(book) {
 
   removeButton.addEventListener('click', removeBook);
 
-  bookContainer.appendChild(title);
-  bookContainer.appendChild(author);
-  bookContainer.appendChild(status);
-  bookContainer.appendChild(removeButton);
+  bookRowElements.forEach(element => bookContainer.appendChild(element));
   booksContainer.appendChild(bookContainer);
 }
 
