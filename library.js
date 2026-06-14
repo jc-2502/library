@@ -30,19 +30,23 @@ function displayBook(book) {
   const title = document.createElement('div');
   const author = document.createElement('div');
   const status = document.createElement('div');
+  const removeButton = document.createElement('button');
 
   title.textContent = book.title;
   author.textContent = book.author;
   status.textContent = book.status;
+  removeButton.textContent = 'remove';
 
   bookContainer.classList.add('book');
   title.classList.add('title');
   author.classList.add('author');
   status.classList.add('status');
+  removeButton.classList.add('remove');
 
   bookContainer.appendChild(title);
   bookContainer.appendChild(author);
   bookContainer.appendChild(status);
+  bookContainer.appendChild(removeButton);
   booksContainer.appendChild(bookContainer);
 }
 

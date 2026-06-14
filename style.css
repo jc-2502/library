@@ -29,10 +29,6 @@ h1, h2 {
   flex-direction: column;
 }
 
-#add-book {
+#add-book, .books > * {
   grid-template-columns: 35% 35% 15% 15%;
-}
-
-.books > * {
-  grid-template-columns: 40% 40% 20%;
 }
