@@ -27,23 +27,27 @@ function displayBook(book) {
   const bookContainer = document.createElement('div');
   const title = document.createElement('div');
   const author = document.createElement('div');
-  const status = document.createElement('div');
+  const statusButton = document.createElement('button');
   const removeButton = document.createElement('button');
-  const bookRowElements = [title, author, status, removeButton];
+  const bookRowElements = [title, author, statusButton, removeButton];
   const allBookElements = bookRowElements.concat(bookContainer);
 
   title.textContent = book.title;
   author.textContent = book.author;
-  status.textContent = book.status;
+  statusButton.textContent = book.status;
   removeButton.textContent = 'remove';
 
   bookContainer.classList.add('book');
   title.classList.add('title');
   author.classList.add('author');
-  status.classList.add('status');
+  statusButton.classList.add('status');
   removeButton.classList.add('remove');
 
   allBookElements.forEach(element => element.dataset.id = book.id);
+
+  statusButton.addEventListener('click', changeStatus);
+  statusButton.addEventListener('keydown', handleKeydownOnStatusButton);
+  statusButton.addEventListener('keyup', handleKeyupOnStatusButton);
 
   removeButton.addEventListener('click', removeBook);
   removeButton.addEventListener('keydown', handleKeydownOnRemoveButton);
@@ -51,6 +55,38 @@ function displayBook(book) {
 
   bookRowElements.forEach(element => bookContainer.appendChild(element));
   booksContainer.appendChild(bookContainer);
+}
+
+function handleKeydownOnStatusButton(event) {
+  if (event.key === 'Enter') {
+    // prevent Enter from sending click event - only want changeStatus to run on keyup
+    event.preventDefault();
+  }
+}
+
+function handleKeyupOnStatusButton(event) {
+  if (event.key === 'Enter' || event.key === ' ') {
+    changeStatus(event);
+  }
+}
+
+function changeStatus(event) {
+  const idToUpdate = event.target.dataset.id;
+  const currentStatus = event.target.textContent;
+  let newStatus;
+
+  if (currentStatus === 'not started') {
+    newStatus = 'reading';
+  } else if (currentStatus === 'reading') {
+    newStatus = 'finished';
+  } else {
+    newStatus = 'not started';
+  }
+
+  event.target.textContent = newStatus;
+
+  const indexToUpdate = library.findIndex(book => book['id'] === idToUpdate);
+  library[indexToUpdate].status = newStatus;
 }
 
 function handleKeydownOnRemoveButton(event) {
