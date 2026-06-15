@@ -46,9 +46,24 @@ function displayBook(book) {
   allBookElements.forEach(element => element.dataset.id = book.id);
 
   removeButton.addEventListener('click', removeBook);
+  removeButton.addEventListener('keydown', handleKeydownOnRemoveButton);
+  removeButton.addEventListener('keyup', handleKeyupOnRemoveButton);
 
   bookRowElements.forEach(element => bookContainer.appendChild(element));
   booksContainer.appendChild(bookContainer);
+}
+
+function handleKeydownOnRemoveButton(event) {
+  if (event.key === 'Enter') {
+    // prevent Enter from sending click event - only want removeBook to run on keyup
+    event.preventDefault();
+  }
+}
+
+function handleKeyupOnRemoveButton(event) {
+  if (event.key === 'Enter' || event.key === ' ') {
+    removeBook(event);
+  }
 }
 
 function removeBook(event) {
