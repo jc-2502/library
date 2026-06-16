@@ -50,20 +50,20 @@ function displayBook(book) {
   allBookElements.forEach(element => element.dataset.id = book.id);
 
   statusButton.addEventListener('click', toggleStatus);
-  statusButton.addEventListener('keydown', handleKeydownOnStatusButton);
+  statusButton.addEventListener('keydown', handleKeydownOnButton);
   statusButton.addEventListener('keyup', handleKeyupOnStatusButton);
 
   removeButton.addEventListener('click', removeBook);
-  removeButton.addEventListener('keydown', handleKeydownOnRemoveButton);
+  removeButton.addEventListener('keydown', handleKeydownOnButton);
   removeButton.addEventListener('keyup', handleKeyupOnRemoveButton);
 
   bookRowElements.forEach(element => bookContainer.appendChild(element));
   booksContainer.appendChild(bookContainer);
 }
 
-function handleKeydownOnStatusButton(event) {
+function handleKeydownOnButton(event) {
   if (event.key === 'Enter') {
-    // prevent Enter from sending click event - only want toggleStatus to run on keyup
+    // prevent Enter from sending click event - only want removeBook / toggleStatus to run on keyup
     event.preventDefault();
   }
 }
@@ -91,13 +91,6 @@ function toggleStatus(event) {
 
   let bookToUpdate = library.find(book => book['id'] === idToUpdate);
   bookToUpdate.changeStatus(newStatus);
-}
-
-function handleKeydownOnRemoveButton(event) {
-  if (event.key === 'Enter') {
-    // prevent Enter from sending click event - only want removeBook to run on keyup
-    event.preventDefault();
-  }
 }
 
 function handleKeyupOnRemoveButton(event) {
