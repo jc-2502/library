@@ -14,6 +14,10 @@ function Book(id, title, author, status) {
   this.status = status;
 }
 
+Book.prototype.changeStatus = function (newStatus) {
+  this.status = newStatus;
+}
+
 function addBookToLibrary(title, author, status) {
   const id = crypto.randomUUID();
   const book = new Book(id, title, author, status);
@@ -45,7 +49,7 @@ function displayBook(book) {
 
   allBookElements.forEach(element => element.dataset.id = book.id);
 
-  statusButton.addEventListener('click', changeStatus);
+  statusButton.addEventListener('click', toggleStatus);
   statusButton.addEventListener('keydown', handleKeydownOnStatusButton);
   statusButton.addEventListener('keyup', handleKeyupOnStatusButton);
 
@@ -59,18 +63,18 @@ function displayBook(book) {
 
 function handleKeydownOnStatusButton(event) {
   if (event.key === 'Enter') {
-    // prevent Enter from sending click event - only want changeStatus to run on keyup
+    // prevent Enter from sending click event - only want toggleStatus to run on keyup
     event.preventDefault();
   }
 }
 
 function handleKeyupOnStatusButton(event) {
   if (event.key === 'Enter' || event.key === ' ') {
-    changeStatus(event);
+    toggleStatus(event);
   }
 }
 
-function changeStatus(event) {
+function toggleStatus(event) {
   const idToUpdate = event.target.dataset.id;
   const currentStatus = event.target.textContent;
   let newStatus;
@@ -85,8 +89,8 @@ function changeStatus(event) {
 
   event.target.textContent = newStatus;
 
-  const indexToUpdate = library.findIndex(book => book['id'] === idToUpdate);
-  library[indexToUpdate].status = newStatus;
+  let bookToUpdate = library.find(book => book['id'] === idToUpdate);
+  bookToUpdate.changeStatus(newStatus);
 }
 
 function handleKeydownOnRemoveButton(event) {
