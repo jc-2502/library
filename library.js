@@ -51,11 +51,11 @@ function displayBook(book) {
 
   statusButton.addEventListener('click', toggleStatus);
   statusButton.addEventListener('keydown', handleKeydownOnButton);
-  statusButton.addEventListener('keyup', handleKeyupOnStatusButton);
+  statusButton.addEventListener('keyup', handleKeyupOnButton);
 
   removeButton.addEventListener('click', removeBook);
   removeButton.addEventListener('keydown', handleKeydownOnButton);
-  removeButton.addEventListener('keyup', handleKeyupOnRemoveButton);
+  removeButton.addEventListener('keyup', handleKeyupOnButton);
 
   bookRowElements.forEach(element => bookContainer.appendChild(element));
   booksContainer.appendChild(bookContainer);
@@ -68,9 +68,13 @@ function handleKeydownOnButton(event) {
   }
 }
 
-function handleKeyupOnStatusButton(event) {
+function handleKeyupOnButton(event) {
   if (event.key === 'Enter' || event.key === ' ') {
-    toggleStatus(event);
+    if (event.target.classList.contains('remove')) {
+      removeBook(event);
+    } else if (event.target.classList.contains('status')) {
+      toggleStatus(event);
+    }
   }
 }
 
@@ -91,12 +95,6 @@ function toggleStatus(event) {
 
   let bookToUpdate = library.find(book => book['id'] === idToUpdate);
   bookToUpdate.changeStatus(newStatus);
-}
-
-function handleKeyupOnRemoveButton(event) {
-  if (event.key === 'Enter' || event.key === ' ') {
-    removeBook(event);
-  }
 }
 
 function removeBook(event) {
