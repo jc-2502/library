@@ -35,6 +35,7 @@ function displayBook(book) {
   const removeButton = document.createElement('button');
   const bookRowElements = [title, author, statusButton, removeButton];
   const allBookElements = bookRowElements.concat(bookContainer);
+  const buttons = [statusButton, removeButton];
 
   title.textContent = book.title;
   author.textContent = book.author;
@@ -50,12 +51,9 @@ function displayBook(book) {
   allBookElements.forEach(element => element.dataset.id = book.id);
 
   statusButton.addEventListener('click', toggleStatus);
-  statusButton.addEventListener('keydown', handleKeydownOnButton);
-  statusButton.addEventListener('keyup', handleKeyupOnButton);
-
   removeButton.addEventListener('click', removeBook);
-  removeButton.addEventListener('keydown', handleKeydownOnButton);
-  removeButton.addEventListener('keyup', handleKeyupOnButton);
+  buttons.forEach(button => button.addEventListener('keydown', handleKeydownOnButton));
+  buttons.forEach(button => button.addEventListener('keyup', handleKeyupOnButton));
 
   bookRowElements.forEach(element => bookContainer.appendChild(element));
   booksContainer.appendChild(bookContainer);
