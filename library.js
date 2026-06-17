@@ -38,7 +38,7 @@ counts.getInitialCounts = function () {
   this['total'] = statuses.reduce((total, status) => total + this[status], 0);
 
   this.displayAll();
-}
+};
 
 counts.updateCountsAfterAddingBook = function (statusToIncrement) {
   ++this[statusToIncrement];
@@ -64,12 +64,12 @@ counts.updateCountsAfterChangingStatus = function (statusToDecrement, statusToIn
 counts.displayAll = function () {
   const statuses = ['total', 'finished', 'reading', 'not started'];
   statuses.forEach((status) => this.display(status));
-}
+};
 
 counts.display = function (status) {
   const countElement = document.querySelector(`.${status.replaceAll(' ','-')}-count`);
   countElement.textContent = ''.concat(status.charAt(0).toUpperCase(), status.slice(1), ': ', this[status]);
-}
+};
 
 function addBookFromForm(event) {
   event.preventDefault();
