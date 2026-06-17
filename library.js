@@ -62,13 +62,13 @@ counts.updateCountsAfterChangingStatus = function (statusToDecrement, statusToIn
 };
 
 counts.displayAll = function () {
-  const statuses = ['total', 'finished', 'reading', 'not started'];
-  statuses.forEach((status) => this.display(status));
+  const countTypes = ['total', 'finished', 'reading', 'not started'];
+  countTypes.forEach((countType) => this.display(countType));
 };
 
-counts.display = function (status) {
-  const countElement = document.querySelector(`.${status.replaceAll(' ','-')}-count`);
-  countElement.textContent = ''.concat(status.charAt(0).toUpperCase(), status.slice(1), ': ', this[status]);
+counts.display = function (countType) {
+  const countElement = document.querySelector(`.${countType.replaceAll(' ','-')}-count`);
+  countElement.textContent = ''.concat(countType.charAt(0).toUpperCase(), countType.slice(1), ': ', this[countType]);
 };
 
 function addBookFromForm(event) {
