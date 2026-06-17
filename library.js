@@ -54,6 +54,13 @@ counts.updateCountsAfterRemovingBook = function (statusToDecrement) {
   this.display('total');
 };
 
+counts.updateCountsAfterChangingStatus = function (statusToDecrement, statusToIncrement) {
+  --this[statusToDecrement];
+  ++this[statusToIncrement];
+  this.display(statusToDecrement);
+  this.display(statusToIncrement);
+};
+
 counts.displayAll = function () {
   const statuses = ['total', 'finished', 'reading', 'not started'];
   statuses.forEach((status) => this.display(status));
@@ -147,6 +154,7 @@ function toggleStatus(event) {
   }
 
   event.target.textContent = newStatus;
+  counts.updateCountsAfterChangingStatus(currentStatus, newStatus);
 
   let bookToUpdate = library.find(book => book['id'] === idToUpdate);
   bookToUpdate.changeStatus(newStatus);
