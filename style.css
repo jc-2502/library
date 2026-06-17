@@ -20,8 +20,22 @@ h1, h2 {
   text-align: center;
 }
 
-#add-book, .books > * {
+.header-section, #add-book, .books > * {
   display: grid;
+}
+
+.header-section {
+/*   grid-template-columns: repeat(3, minmax(0, 1fr)); */
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.header-section > h1 {
+  grid-column-start: 2;
+}
+
+.counts {
+  grid-column-start: 3;
+  justify-self: right;
 }
 
 .form-control {
