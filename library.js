@@ -19,6 +19,15 @@ Book.prototype.changeStatus = function (newStatus) {
   this.status = newStatus;
 }
 
+function addBookToLibrary(title, author, status) {
+  const id = crypto.randomUUID();
+  const book = new Book(id, title, author, status);
+
+  library.push(book);
+
+  displayBook(book);
+}
+
 function getInitialCounts() {
   const statuses = ['finished', 'reading', 'not started'];
 
@@ -29,13 +38,23 @@ function getInitialCounts() {
   counts['total'] = statuses.reduce((total, status) => total + counts[status], 0);
 }
 
-function addBookToLibrary(title, author, status) {
-  const id = crypto.randomUUID();
-  const book = new Book(id, title, author, status);
+function addBookFromForm(event) {
+  event.preventDefault();
 
-  library.push(book);
+  const formElements = event.target.elements;
+  const enteredTitle = formElements['entered-title'].value;
+  const enteredAuthor = formElements['entered-author'].value;
+  const selectedStatus = formElements['selected-status'].value;
 
-  displayBook(book);
+  addBookToLibrary(enteredTitle, enteredAuthor, selectedStatus);
+
+  resetForm(formElements);
+}
+
+function resetForm(formElements) {
+  const titleInput = formElements['entered-title'];
+  titleInput.value = titleInput.defaultValue;
+  titleInput.focus();
 }
 
 function displayBook(book) {
@@ -114,25 +133,6 @@ function removeBook(event) {
 
   library = library.filter(book => book['id'] !== idToRemove);
   // library.splice(library.findIndex(book => book['id'] === idToRemove), 1);
-}
-
-function addBookFromForm(event) {
-  event.preventDefault();
-
-  const formElements = event.target.elements;
-  const enteredTitle = formElements['entered-title'].value;
-  const enteredAuthor = formElements['entered-author'].value;
-  const selectedStatus = formElements['selected-status'].value;
-
-  addBookToLibrary(enteredTitle, enteredAuthor, selectedStatus);
-
-  resetForm(formElements);
-}
-
-function resetForm(formElements) {
-  const titleInput = formElements['entered-title'];
-  titleInput.value = titleInput.defaultValue;
-  titleInput.focus();
 }
 
 addBookForm.addEventListener('submit', addBookFromForm);
