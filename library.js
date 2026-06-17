@@ -42,11 +42,12 @@ counts.getInitialCounts = function () {
 
 counts.displayAll = function () {
   const statuses = ['total', 'finished', 'reading', 'not started'];
+  statuses.forEach((status) => this.display(status));
+}
 
-  statuses.forEach((status) => {
-    const countElement = document.querySelector(`.${status.replaceAll(' ','-')}-count`);
-    countElement.textContent = ''.concat(status.charAt(0).toUpperCase(), status.slice(1), ': ', this[status]);
-  });
+counts.display = function (status) {
+  const countElement = document.querySelector(`.${status.replaceAll(' ','-')}-count`);
+  countElement.textContent = ''.concat(status.charAt(0).toUpperCase(), status.slice(1), ': ', this[status]);
 }
 
 function addBookFromForm(event) {
