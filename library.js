@@ -47,6 +47,13 @@ counts.updateCountsAfterAddingBook = function (statusToIncrement) {
   this.display('total');
 };
 
+counts.updateCountsAfterRemovingBook = function (statusToDecrement) {
+  --this[statusToDecrement];
+  --this['total'];
+  this.display(statusToDecrement);
+  this.display('total');
+};
+
 counts.displayAll = function () {
   const statuses = ['total', 'finished', 'reading', 'not started'];
   statuses.forEach((status) => this.display(status));
@@ -149,7 +156,9 @@ function removeBook(event) {
   const idToRemove = event.target.dataset.id;
 
   const bookContainer = document.querySelector(`.book[data-id='${idToRemove}']`);
+  const statusToDecrement = document.querySelector(`.status[data-id='${idToRemove}']`).textContent;
   bookContainer.remove();
+  counts.updateCountsAfterRemovingBook(statusToDecrement);
 
   library = library.filter(book => book['id'] !== idToRemove);
   // library.splice(library.findIndex(book => book['id'] === idToRemove), 1);
