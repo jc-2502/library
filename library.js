@@ -1,4 +1,5 @@
 let library = [];
+let counts = {};
 
 const addBookForm = document.querySelector('#add-book');
 const booksContainer = document.querySelector('.books');
@@ -16,6 +17,16 @@ function Book(id, title, author, status) {
 
 Book.prototype.changeStatus = function (newStatus) {
   this.status = newStatus;
+}
+
+function getInitialCounts() {
+  const statuses = ['finished', 'reading', 'not started'];
+
+  statuses.forEach((status) => {
+    counts[status] = library.reduce((count, book) => (book.status === status) ? ++count : count, 0);
+  });
+
+  counts['total'] = statuses.reduce((total, status) => total + counts[status], 0);
 }
 
 function addBookToLibrary(title, author, status) {
@@ -130,3 +141,5 @@ addBookToLibrary('Thinking, Fast and Slow', 'Daniel Kahneman', 'finished');
 addBookToLibrary('Predictably Irrational', 'Dan Ariely', 'finished');
 addBookToLibrary('Nudge', 'Richard Thaler and Cass Sunstein', 'reading');
 addBookToLibrary('Ulysses', 'James Joyce', 'not started');
+
+getInitialCounts();
