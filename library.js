@@ -28,24 +28,24 @@ function addBookToLibrary(title, author, status) {
   displayBook(book);
 }
 
-function getInitialCounts() {
+counts.getInitialCounts = function () {
   const statuses = ['finished', 'reading', 'not started'];
 
   statuses.forEach((status) => {
-    counts[status] = library.reduce((count, book) => (book.status === status) ? ++count : count, 0);
+    this[status] = library.reduce((count, book) => (book.status === status) ? ++count : count, 0);
   });
 
-  counts['total'] = statuses.reduce((total, status) => total + counts[status], 0);
+  this['total'] = statuses.reduce((total, status) => total + this[status], 0);
 
-  displayCounts();
+  this.displayAll();
 }
 
-function displayCounts() {
+counts.displayAll = function () {
   const statuses = ['total', 'finished', 'reading', 'not started'];
 
   statuses.forEach((status) => {
     const countElement = document.querySelector(`.${status.replaceAll(' ','-')}-count`);
-    countElement.textContent = ''.concat(status.charAt(0).toUpperCase(), status.slice(1), ': ', counts[status]);
+    countElement.textContent = ''.concat(status.charAt(0).toUpperCase(), status.slice(1), ': ', this[status]);
   });
 }
 
@@ -153,4 +153,4 @@ addBookToLibrary('Predictably Irrational', 'Dan Ariely', 'finished');
 addBookToLibrary('Nudge', 'Richard Thaler and Cass Sunstein', 'reading');
 addBookToLibrary('Ulysses', 'James Joyce', 'not started');
 
-getInitialCounts();
+counts.getInitialCounts();
