@@ -36,6 +36,17 @@ function getInitialCounts() {
   });
 
   counts['total'] = statuses.reduce((total, status) => total + counts[status], 0);
+
+  displayCounts();
+}
+
+function displayCounts() {
+  const statuses = ['total', 'finished', 'reading', 'not started'];
+
+  statuses.forEach((status) => {
+    const countElement = document.querySelector(`.${status.replaceAll(' ','-')}-count`);
+    countElement.textContent = ''.concat(status.charAt(0).toUpperCase(), status.slice(1), ': ', counts[status]);
+  });
 }
 
 function addBookFromForm(event) {
