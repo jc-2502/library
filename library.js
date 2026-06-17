@@ -40,6 +40,13 @@ counts.getInitialCounts = function () {
   this.displayAll();
 }
 
+counts.updateCountsAfterAddingBook = function (statusToIncrement) {
+  ++this[statusToIncrement];
+  ++this['total'];
+  this.display(statusToIncrement);
+  this.display('total');
+};
+
 counts.displayAll = function () {
   const statuses = ['total', 'finished', 'reading', 'not started'];
   statuses.forEach((status) => this.display(status));
@@ -59,6 +66,7 @@ function addBookFromForm(event) {
   const selectedStatus = formElements['selected-status'].value;
 
   addBookToLibrary(enteredTitle, enteredAuthor, selectedStatus);
+  counts.updateCountsAfterAddingBook(selectedStatus);
 
   resetForm(formElements);
 }
