@@ -44,6 +44,8 @@ h1, h2 {
 .counts {
   grid-column-start: 3;
   justify-self: right;
+  border: 1px solid gray;
+  padding: 8px;
 }
 
 /* ****************************** add book form section ****************************** */
