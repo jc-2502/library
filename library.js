@@ -37,38 +37,38 @@ counts.getInitialCounts = function () {
 
   this['total'] = statuses.reduce((total, status) => total + this[status], 0);
 
-  this.displayAll();
+  displayCounts();
 };
 
 counts.updateCountsAfterAddingBook = function (statusToIncrement) {
   ++this[statusToIncrement];
   ++this['total'];
-  this.display(statusToIncrement);
-  this.display('total');
+  displayCount(statusToIncrement);
+  displayCount('total');
 };
 
 counts.updateCountsAfterRemovingBook = function (statusToDecrement) {
   --this[statusToDecrement];
   --this['total'];
-  this.display(statusToDecrement);
-  this.display('total');
+  displayCount(statusToDecrement);
+  displayCount('total');
 };
 
 counts.updateCountsAfterChangingStatus = function (statusToDecrement, statusToIncrement) {
   --this[statusToDecrement];
   ++this[statusToIncrement];
-  this.display(statusToDecrement);
-  this.display(statusToIncrement);
+  displayCount(statusToDecrement);
+  displayCount(statusToIncrement);
 };
 
-counts.displayAll = function () {
+function displayCounts() {
   const countTypes = ['total', 'finished', 'reading', 'not started'];
-  countTypes.forEach((countType) => this.display(countType));
+  countTypes.forEach((countType) => displayCount(countType));
 };
 
-counts.display = function (countType) {
+function displayCount(countType) {
   const countElement = document.querySelector(`.${countType.replaceAll(' ','-')}-count`);
-  countElement.textContent = ''.concat(countType.charAt(0).toUpperCase(), countType.slice(1), ': ', this[countType]);
+  countElement.textContent = ''.concat(countType.charAt(0).toUpperCase(), countType.slice(1), ': ', counts[countType]);
 };
 
 function addBookFromForm(event) {
