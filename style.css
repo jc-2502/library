@@ -9,11 +9,19 @@
   margin: 0;
 }
 
-/* ******************************  ****************************** */
+/* ****************************** shared ****************************** */
 
 body > * {
   max-width: 1000px;
   margin: auto;
+}
+
+.header-section, #add-book, .books > * {
+  display: grid;
+}
+
+#add-book, .books > * {
+  grid-template-columns: 35% 35% 15% 15%;
 }
 
 h1, h2 {
@@ -21,9 +29,7 @@ h1, h2 {
   align-content: center;
 }
 
-.header-section, #add-book, .books > * {
-  display: grid;
-}
+/* ****************************** header section ****************************** */
 
 .header-section {
 /*   grid-template-columns: repeat(3, minmax(0, 1fr)); */
@@ -35,13 +41,15 @@ h1, h2 {
   grid-column-start: 2;
 }
 
-.add-book-section {
-  margin-top: 25px;
-}
-
 .counts {
   grid-column-start: 3;
   justify-self: right;
+}
+
+/* ****************************** add book form section ****************************** */
+
+.add-book-section {
+  margin-top: 25px;
 }
 
 .form-control {
@@ -49,9 +57,7 @@ h1, h2 {
   flex-direction: column;
 }
 
-#add-book, .books > * {
-  grid-template-columns: 35% 35% 15% 15%;
-}
+/* ****************************** books section ****************************** */
 
 .books-section {
   margin-top: 35px;
