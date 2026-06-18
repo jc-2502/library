@@ -16,7 +16,7 @@ body > * {
   margin: auto;
 }
 
-.header-section, #add-book, .books > * {
+.header-section, #add-book, .books, .books > * {
   display: grid;
 }
 
@@ -63,4 +63,12 @@ h1, h2 {
 
 .books-section {
   margin-top: 35px;
+}
+
+.books-section > h2 {
+  margin-bottom: 10px;
+}
+
+.books {
+  gap: 10px;
 }
