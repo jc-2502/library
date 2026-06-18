@@ -41,22 +41,16 @@ counts.getInitialCounts = function () {
 counts.updateCountsAfterAddingBook = function (statusToIncrement) {
   ++this[statusToIncrement];
   ++this['total'];
-  displayCount(statusToIncrement);
-  displayCount('total');
 };
 
 counts.updateCountsAfterRemovingBook = function (statusToDecrement) {
   --this[statusToDecrement];
   --this['total'];
-  displayCount(statusToDecrement);
-  displayCount('total');
 };
 
 counts.updateCountsAfterChangingStatus = function (statusToDecrement, statusToIncrement) {
   --this[statusToDecrement];
   ++this[statusToIncrement];
-  displayCount(statusToDecrement);
-  displayCount(statusToIncrement);
 };
 
 function displayCounts() {
@@ -79,7 +73,10 @@ function addBookFromForm(event) {
 
   const book = addBookToLibrary(enteredTitle, enteredAuthor, selectedStatus);
   displayBook(book);
+
   counts.updateCountsAfterAddingBook(selectedStatus);
+  displayCount(selectedStatus);
+  displayCount('total');
 
   resetForm(formElements);
 }
@@ -153,7 +150,10 @@ function toggleStatus(event) {
   }
 
   event.target.textContent = newStatus;
+
   counts.updateCountsAfterChangingStatus(currentStatus, newStatus);
+  displayCount(currentStatus);
+  displayCount(newStatus);
 
   let bookToUpdate = library.find(book => book['id'] === idToUpdate);
   bookToUpdate.changeStatus(newStatus);
@@ -165,7 +165,10 @@ function removeBook(event) {
   const bookContainer = document.querySelector(`.book[data-id='${idToRemove}']`);
   const statusToDecrement = document.querySelector(`.status[data-id='${idToRemove}']`).textContent;
   bookContainer.remove();
+
   counts.updateCountsAfterRemovingBook(statusToDecrement);
+  displayCount(statusToDecrement);
+  displayCount('total');
 
   library = library.filter(book => book['id'] !== idToRemove);
   // library.splice(library.findIndex(book => book['id'] === idToRemove), 1);
