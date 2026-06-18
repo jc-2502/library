@@ -36,8 +36,6 @@ counts.getInitialCounts = function () {
   });
 
   this['total'] = statuses.reduce((total, status) => total + this[status], 0);
-
-  displayCounts();
 };
 
 counts.updateCountsAfterAddingBook = function (statusToIncrement) {
@@ -186,4 +184,6 @@ function addInitialBooks() {
 addBookForm.addEventListener('submit', addBookFromForm);
 
 addInitialBooks();
+
 counts.getInitialCounts();
+displayCounts();
