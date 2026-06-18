@@ -172,11 +172,14 @@ function removeBook(event) {
   // library.splice(library.findIndex(book => book['id'] === idToRemove), 1);
 }
 
+function addInitialBooks() {
+  addBookToLibrary('Thinking, Fast and Slow', 'Daniel Kahneman', 'finished');
+  addBookToLibrary('Predictably Irrational', 'Dan Ariely', 'finished');
+  addBookToLibrary('Nudge', 'Richard Thaler and Cass Sunstein', 'reading');
+  addBookToLibrary('Ulysses', 'James Joyce', 'not started');
+}
+
 addBookForm.addEventListener('submit', addBookFromForm);
 
-addBookToLibrary('Thinking, Fast and Slow', 'Daniel Kahneman', 'finished');
-addBookToLibrary('Predictably Irrational', 'Dan Ariely', 'finished');
-addBookToLibrary('Nudge', 'Richard Thaler and Cass Sunstein', 'reading');
-addBookToLibrary('Ulysses', 'James Joyce', 'not started');
-
+addInitialBooks();
 counts.getInitialCounts();
