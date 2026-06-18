@@ -25,7 +25,7 @@ function addBookToLibrary(title, author, status) {
 
   library.push(book);
 
-  displayBook(book);
+  return book;
 }
 
 counts.getInitialCounts = function () {
@@ -79,7 +79,8 @@ function addBookFromForm(event) {
   const enteredAuthor = formElements['entered-author'].value;
   const selectedStatus = formElements['selected-status'].value;
 
-  addBookToLibrary(enteredTitle, enteredAuthor, selectedStatus);
+  const book = addBookToLibrary(enteredTitle, enteredAuthor, selectedStatus);
+  displayBook(book);
   counts.updateCountsAfterAddingBook(selectedStatus);
 
   resetForm(formElements);
@@ -173,10 +174,13 @@ function removeBook(event) {
 }
 
 function addInitialBooks() {
-  addBookToLibrary('Thinking, Fast and Slow', 'Daniel Kahneman', 'finished');
-  addBookToLibrary('Predictably Irrational', 'Dan Ariely', 'finished');
-  addBookToLibrary('Nudge', 'Richard Thaler and Cass Sunstein', 'reading');
-  addBookToLibrary('Ulysses', 'James Joyce', 'not started');
+  const book1 = addBookToLibrary('Thinking, Fast and Slow', 'Daniel Kahneman', 'finished');
+  const book2 = addBookToLibrary('Predictably Irrational', 'Dan Ariely', 'finished');
+  const book3 = addBookToLibrary('Nudge', 'Richard Thaler and Cass Sunstein', 'reading');
+  const book4 = addBookToLibrary('Ulysses', 'James Joyce', 'not started');
+  const initialBooks = [book1, book2, book3, book4];
+
+  initialBooks.forEach(book => displayBook(book));
 }
 
 addBookForm.addEventListener('submit', addBookFromForm);
