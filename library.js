@@ -54,8 +54,7 @@ counts.updateCountsAfterChangingStatus = function (statusToDecrement, statusToIn
 };
 
 function displayCounts() {
-  const countTypes = ['total', 'finished', 'reading', 'not started'];
-  countTypes.forEach((countType) => displayCount(countType));
+  Array.from(arguments).forEach(countType => displayCount(countType));
 };
 
 function displayCount(countType) {
@@ -75,8 +74,7 @@ function addBookFromForm(event) {
   displayBook(book);
 
   counts.updateCountsAfterAddingBook(selectedStatus);
-  displayCount(selectedStatus);
-  displayCount('total');
+  displayCounts(selectedStatus, 'total');
 
   resetForm(formElements);
 }
@@ -152,8 +150,7 @@ function toggleStatus(event) {
   event.target.textContent = newStatus;
 
   counts.updateCountsAfterChangingStatus(currentStatus, newStatus);
-  displayCount(currentStatus);
-  displayCount(newStatus);
+  displayCounts(currentStatus, newStatus);
 
   let bookToUpdate = library.find(book => book['id'] === idToUpdate);
   bookToUpdate.changeStatus(newStatus);
@@ -167,8 +164,7 @@ function removeBook(event) {
   bookContainer.remove();
 
   counts.updateCountsAfterRemovingBook(statusToDecrement);
-  displayCount(statusToDecrement);
-  displayCount('total');
+  displayCounts(statusToDecrement, 'total');
 
   library = library.filter(book => book['id'] !== idToRemove);
   // library.splice(library.findIndex(book => book['id'] === idToRemove), 1);
@@ -189,4 +185,4 @@ addBookForm.addEventListener('submit', addBookFromForm);
 addInitialBooks();
 
 counts.getInitialCounts();
-displayCounts();
+displayCounts('total', 'finished', 'reading', 'not started');
