@@ -28,10 +28,15 @@ h1, h2 {
 .header-section {
 /*   grid-template-columns: repeat(3, minmax(0, 1fr)); */
   grid-template-columns: repeat(3, 1fr);
+  margin-top: 20px;
 }
 
 .header-section > h1 {
   grid-column-start: 2;
+}
+
+.add-book-section {
+  margin-top: 25px;
 }
 
 .counts {
@@ -46,4 +51,8 @@ h1, h2 {
 
 #add-book, .books > * {
   grid-template-columns: 35% 35% 15% 15%;
+}
+
+.books-section {
+  margin-top: 35px;
 }
