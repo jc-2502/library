@@ -80,6 +80,7 @@ input, select, #add-book button, .status, .remove {
 #add-book {
   grid-auto-flow: column;
   grid-template-rows: repeat(2, auto);
+  margin-top: 10px;
 }
 
 input {
