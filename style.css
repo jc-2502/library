@@ -33,7 +33,7 @@ body > * {
 }
 
 #add-book, .books > * {
-  grid-template-columns: 35% 35% 15% 15%;
+  grid-template-columns: 3.5fr 3.5fr 1.5fr 1.5fr;
 }
 
 h1, h2 {
