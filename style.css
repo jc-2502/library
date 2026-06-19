@@ -105,6 +105,10 @@ h1, h2 {
   gap: 10px;
 }
 
+.book {
+  align-items: center;
+}
+
 .remove {
   background-color: var(--remove-1);
   font-size: 16px;
