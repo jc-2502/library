@@ -81,6 +81,15 @@ input, select, #add-book button, .status, .remove {
   grid-template-rows: repeat(2, auto);
 }
 
+select {
+  background-color: white;
+  font-size: 16px;
+  width: 140px;
+  height: 40px;
+  text-align: center;
+  border: 1px solid gray;
+}
+
 #add-book button {
   background-color: var(--add-1);
   color: white;
