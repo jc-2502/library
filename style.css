@@ -29,6 +29,7 @@ body > * {
 
 .header-section, #add-book, .books, .books > * {
   display: grid;
+  gap: 10px;
 }
 
 #add-book, .books > * {
@@ -121,10 +122,6 @@ select {
 
 .books-section > h2 {
   margin-bottom: 10px;
-}
-
-.books {
-  gap: 10px;
 }
 
 .book {
