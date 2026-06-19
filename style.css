@@ -18,6 +18,7 @@
   --remove-1: rgb(225, 230, 235);
   --remove-2: rgb(200, 205, 210);
   --remove-3: rgb(170, 175, 180);
+  --gray-border: rgb(225, 230, 235);
 }
 
 /* ****************************** shared ****************************** */
@@ -29,7 +30,6 @@ body > * {
 
 .header-section, #add-book, .books, .books > * {
   display: grid;
-  row-gap: 10px;
   column-gap: 25px;
 }
 
@@ -81,6 +81,7 @@ input, select, #add-book button, .status, .remove {
 #add-book {
   grid-auto-flow: column;
   grid-template-rows: repeat(2, auto);
+  row-gap: 10px;
   margin-top: 10px;
 }
 
@@ -126,8 +127,10 @@ select {
   margin-top: 35px;
 }
 
-.books-section > h2 {
-  margin-bottom: 10px;
+.books > * {
+  border-bottom: 1px solid var(--gray-border);
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .book {
