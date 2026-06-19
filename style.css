@@ -85,7 +85,7 @@ h1, h2 {
   grid-row-start: 2;
 }
 
-#add-book button:is(:hover, :focus) {
+#add-book button:hover {
   background-color: var(--add-2);
 }
 
@@ -133,7 +133,7 @@ h1, h2 {
   font-size: 16px;
 }
 
-.remove:is(:hover, :focus) {
+.remove:hover {
   background-color: var(--remove-2);
 }
 
