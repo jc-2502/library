@@ -36,7 +36,7 @@ body > * {
   grid-template-columns: 3.5fr 3.5fr 1.5fr 1.5fr;
 }
 
-h1, h2 {
+h1, .books-section h2 {
   text-align: center;
   align-content: center;
 }
@@ -81,6 +81,11 @@ input, select, #add-book button, .status, .remove {
   grid-auto-flow: column;
   grid-template-rows: repeat(2, auto);
   margin-top: 10px;
+}
+
+label {
+  font-size: 1.17em;
+  font-weight: bold;
 }
 
 input {
