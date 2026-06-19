@@ -43,6 +43,7 @@ h1, h2 {
   width: 90px;
   height: 40px;
   border-radius: 5px;
+  justify-self: right;
 }
 
 /* ****************************** header section ****************************** */
@@ -70,15 +71,16 @@ h1, h2 {
   margin-top: 25px;
 }
 
-.form-control {
-  display: flex;
-  flex-direction: column;
+#add-book {
+  grid-auto-flow: column;
+  grid-template-rows: repeat(2, auto);
 }
 
 #add-book button {
   background-color: var(--add-1);
   color: white;
   font-size: 16px;
+  grid-row-start: 2;
 }
 
 #add-book button:is(:hover, :focus) {
@@ -106,7 +108,6 @@ h1, h2 {
 .remove {
   background-color: var(--remove-1);
   font-size: 16px;
-  justify-self: right;
 }
 
 .remove:is(:hover, :focus) {
