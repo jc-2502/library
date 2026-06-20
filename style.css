@@ -56,6 +56,10 @@ input, select, #add-book button, .status, .remove {
   justify-self: right;
 }
 
+label[for='selected-status'], .books h3:nth-child(3) {
+  text-align: center;
+}
+
 /* ****************************** header section ****************************** */
 
 .header-section {
@@ -113,6 +117,7 @@ select {
   height: 40px;
   text-align: center;
   border: 1px solid gray;
+  justify-self: center;
 }
 
 #add-book button {
@@ -156,6 +161,7 @@ select {
   width: 125px;
   height: 40px;
   font-size: 16px;
+  justify-self: center;
 }
 
 .status:hover {
