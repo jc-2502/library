@@ -59,7 +59,7 @@ function displayCounts() {
 
 function displayCount(countType) {
   const countElement = document.querySelector(`.${countType.replaceAll(' ','-')}-count`);
-  countElement.textContent = `${capitalizeFirstLetter(countType)}: ${counts[countType]}`;
+  countElement.textContent = counts[countType];
 };
 
 function capitalizeFirstLetter(text) {

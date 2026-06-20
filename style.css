@@ -28,8 +28,11 @@ body > * {
   margin: auto;
 }
 
-.header-section, #add-book, .books, .books > * {
+.header-section, .counts, #add-book, .books, .books > * {
   display: grid;
+}
+
+.header-section, #add-book, .books, .books > * {
   column-gap: 25px;
 }
 
@@ -70,6 +73,12 @@ input, select, #add-book button, .status, .remove {
   justify-self: right;
   border: 1px solid gray;
   padding: 8px;
+  grid-template-columns: repeat(2, auto);
+  column-gap: 15px;
+}
+
+.count {
+  text-align: right;
 }
 
 /* ****************************** add book form section ****************************** */
