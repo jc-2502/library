@@ -59,8 +59,12 @@ function displayCounts() {
 
 function displayCount(countType) {
   const countElement = document.querySelector(`.${countType.replaceAll(' ','-')}-count`);
-  countElement.textContent = ''.concat(countType.charAt(0).toUpperCase(), countType.slice(1), ': ', counts[countType]);
+  countElement.textContent = `${capitalizeFirstLetter(countType)}: ${counts[countType]}`;
 };
+
+function capitalizeFirstLetter(text) {
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
 
 function addBookFromForm(event) {
   event.preventDefault();
