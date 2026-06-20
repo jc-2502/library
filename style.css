@@ -36,7 +36,7 @@ body > * {
   display: grid;
 }
 
-.header-section, #add-book, .books, .books > * {
+.header-section, #add-book, .books > * {
   column-gap: 25px;
 }
 
@@ -177,7 +177,7 @@ select {
   padding-bottom: 10px;
 }
 
-.book {
+.column-headers, .book {
   align-items: center;
 }
 
@@ -213,4 +213,30 @@ select {
 
 .remove:active {
   background-color: var(--remove-3);
+}
+
+@media (max-width: 714px) {
+  .books-section {
+    margin-top: 20px;
+  }
+
+  .books > * {
+    grid-template-columns: minmax(175px, 3fr) minmax(115px, 1fr) minmax(95px, 1fr);
+    grid-template-rows: repeat(2, auto);
+    grid-auto-flow: column;
+    column-gap: 10px;
+    row-gap: 3px;
+  }
+
+  .books h3:nth-child(3), .status, .remove {
+    grid-row-end: span 2;
+  }
+
+  .status {
+    width: 105px;
+  }
+
+  .title, .books h3:nth-child(1) {
+    font-style: italic;
+  }
 }
