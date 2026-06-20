@@ -37,7 +37,7 @@ body > * {
 }
 
 #add-book, .books > * {
-  grid-template-columns: repeat(2, minmax(0, 3.5fr)) repeat(2, minmax(0, 1.5fr));
+  grid-template-columns: repeat(2, minmax(175px, 3fr)) minmax(150px, 1fr) minmax(100px, 1fr);
 }
 
 h1, .books-section h2 {
