@@ -10,14 +10,14 @@
 }
 
 :root {
-  --add-1: rgb(100, 125, 75);
-  --add-2: rgb(80, 105, 55);
-  --add-3: rgb(60, 85, 35);
-  --status-2: rgb(240, 240, 240);
-  --status-3: rgb(220, 220, 220);
-  --remove-1: rgb(225, 230, 235);
-  --remove-2: rgb(200, 205, 210);
-  --remove-3: rgb(170, 175, 180);
+  --add: rgb(100, 125, 75);
+  --add-hover: rgb(80, 105, 55);
+  --add-active: rgb(60, 85, 35);
+  --status-hover: rgb(240, 240, 240);
+  --status-active: rgb(220, 220, 220);
+  --remove: rgb(225, 230, 235);
+  --remove-hover: rgb(200, 205, 210);
+  --remove-active: rgb(170, 175, 180);
   --gray-border: rgb(225, 230, 235);
 }
 
@@ -124,18 +124,18 @@ select {
 }
 
 #add-book button {
-  background-color: var(--add-1);
+  background-color: var(--add);
   color: white;
   font-size: 16px;
   grid-row-start: 2;
 }
 
 #add-book button:hover {
-  background-color: var(--add-2);
+  background-color: var(--add-hover);
 }
 
 #add-book button:active {
-  background-color: var(--add-3);
+  background-color: var(--add-active);
 }
 
 @media (max-width: 714px) {
@@ -195,24 +195,24 @@ select {
 }
 
 .status:hover {
-  background-color: var(--status-2);
+  background-color: var(--status-hover);
 }
 
 .status:active {
-  background-color: var(--status-3);
+  background-color: var(--status-active);
 }
 
 .remove {
-  background-color: var(--remove-1);
+  background-color: var(--remove);
   font-size: 16px;
 }
 
 .remove:hover {
-  background-color: var(--remove-2);
+  background-color: var(--remove-hover);
 }
 
 .remove:active {
-  background-color: var(--remove-3);
+  background-color: var(--remove-active);
 }
 
 @media (max-width: 714px) {
